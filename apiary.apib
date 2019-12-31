@@ -1,0 +1,46 @@
+FORMAT: 1A
+
+# WARM API（业务系统API）
+此分类下的API主要是给IM客户端调用，以完成产品业务，以所也可以称为**业务系统API**，以便与**IM系统API**区分开来。**业务系统API**同时也是IM客户端连接到IM服务端的**介绍人**，因为IM客户端必须依赖**业务系统API**提供的token才能使用**IM系统API**。
+
+## 基本信息
+
++ 版本：v1
++ 定义时间：2019-12-16
++ 应用时间：2019-03-16
+
+## 基本约定
+
++ URL前缀：http://server:port/api/v1/
++ 接口形态：Restful
++ Post：JSON
++ 返回：JSON
+
+## HTTP请求头
+
++ 需要验证的操作
+
+        Authentication：JWT jwt-token
+
+# GET /message
++ Response 200 (text/plain)
+
+        Hello World!
+
+# GET /auth
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + token: 1232ddffg23324234234234123213123 (string, required) - 授权码，26个字符
+        + name: neil (string, required) - 名字
+
+    + Body
+
+            {
+                "token": "1232ddffg23324234234234123213123",
+                "name": "neil"
+            }
+
++ Response 404 (text/plain)
+
+        Not found.
